@@ -1,9 +1,10 @@
 //import Hooks
 import { useSelector, useDispatch } from 'react-redux';
-
-
+import { useHistory } from 'react-router-dom';
 
 function StepOne() {
+    //create a variable to use history {useHistory}
+    const history = useHistory();
     //pull value out of redux store {useSelector}
     const personName = useSelector(store => store.personName);
 
@@ -24,6 +25,15 @@ function StepOne() {
         dispatch(action);
     }
 
+    const nextPage = () => {
+        if(allPeople.length > 0) {
+            history.push('/step-2');
+        } else {
+            alert('Please enter a name');
+        }
+    }
+
+
 
 
     return (
@@ -39,6 +49,7 @@ function StepOne() {
                 <li key={index}>{person}</li>
             )}
         </ul>
+        <button onClick={nextPage}>Next</button>
         </>
     )
 }
