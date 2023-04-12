@@ -17,10 +17,23 @@ const personName = (state = 'Name', action) => {
     return state;
 }
 
+// new reducer containing array
+const allPeople = (state = ['Firuza'], action) => {
+    if (action.type === 'ADD_PERSON_NAME') {
+        // return new array with existing state and new action payload
+        return [...state, action.payload];
+        //...state i.e. spread operator copies the array or object
+        //and adds the new payload similar to .push
+    }
+        return state;
+}
+
+
 //create a store
 const storeInstance = createStore( 
     combineReducers({
         personName,
+        allPeople,
     }),
     applyMiddleware(logger),
 );
