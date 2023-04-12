@@ -18,7 +18,7 @@ const personName = (state = 'Name', action) => {
 }
 
 // new reducer containing array
-const allPeople = (state = ['Firuza'], action) => {
+const allPeople = (state = [''], action) => {
     if (action.type === 'ADD_PERSON_NAME') {
         // return new array with existing state and new action payload
         return [...state, action.payload];
@@ -28,12 +28,31 @@ const allPeople = (state = ['Firuza'], action) => {
         return state;
 }
 
+const activityType = (state = 'Biking', action) => {
+    if (action.type === 'SET_ACTIVITY_TYPE') {
+        return action.payload;
+    }
+    return state;
+}
+
+const addMinutes = (state = 0, action) => {
+    if (action.type === 'ADD_MINUTES_COUNT') {
+        return action.payload;
+    }
+    return state;
+}
+
+
+
+
 
 //create a store
 const storeInstance = createStore( 
     combineReducers({
         personName,
         allPeople,
+        activityType,
+        addMinutes,
     }),
     applyMiddleware(logger),
 );
