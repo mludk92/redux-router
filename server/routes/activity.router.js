@@ -40,14 +40,5 @@ router.delete('/:id', (req, res) => {
     })
 });
 
-// POST activities
-router.post('/', (req, res) => {
-
-});
-
-// POST activities
-router.delete('/:id', (req, res) => {
-
-});
 
 module.exports = router;
